@@ -5,46 +5,35 @@
   <p><%= @place.description %></p>
 
  
-    <style> 
-      #map {
-        height: 300px;
-      }
-     
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    
+    #map {
+      height: 300px;
+    }
+ 
+ <% if @place.latitude.present? && @place.longitude.present? %>
 
-  </head>
-  <body>
-    <div id="map"></div>
+  <script>
 
-<% if @place.latitude.present? && @place.longitude.present? %>
+    function initMap() {
+      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitute %>};
 
-    <script>
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: myLatLng
+      });
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
 
-      function initMap() {
-        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AlzaSyDb2P0bi-avrpEFHOsP0drd_SQZo1P4bsE&callback=initMap">
+  </script>
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb2P0bi-avrpEFHOsP0drd_SQZo1P4bsE ">
-    </script>
-
-    <div id="map"></div>
+  <div id="map"></div>   
  <% end %>   
 
  <br />
@@ -59,7 +48,7 @@
 <div class="clear"></div>
 <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
 	<%= f.input :message %>
-	<%= f.input :rating, as: :select, collection: Comment: :RATINGS %>
+	<%= f.input :rating, as: :select, collection: Comment::RATINGS %>
 
 	<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
 <% end %>	
@@ -82,7 +71,7 @@
       <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
          <div class="modal-body">
 	         <%= f.input :message %>
-	         <%= f.input :rating, as: :select, collection: Comment: :RATINGS %>
+	         <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
 	     </div>    
       </div>
       <div class="modal-footer">
