@@ -4,39 +4,35 @@
   <br/><br/>
   <p><%= @place.description %></p>
 
- 
-    
-    #map {
-      height: 300px;
-    }
+  
+     #map {
+     	height: 300px;
+     }
  
  <% if @place.latitude.present? && @place.longitude.present? %>
+ 
+ <script>
 
-  <script>
+      function initMap(){
+      	var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>}:
+      	var map = new google.maps.Map(document.getElementById('map'), {zoom: 12,
+      	     center: myLKatLng});
+      	var marker = new google.maps.Marker({
+      		position: myLatLng,
+      		map: map,
+      		title: 'Hello World!'
+      	});
+      }    
+</script>
 
-    function initMap() {
-      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitute %>};
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb2P0bi-avrpEFHOsP0drd_SQZo1P4bsE&callback=initMap">
+</script>   
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: myLatLng
-      });
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    }
-  </script>
+<div id="map"></div>
+<% end %>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AlzaSyDb2P0bi-avrpEFHOsP0drd_SQZo1P4bsE&callback=initMap">
-  </script>
-
-  <div id="map"></div>   
- <% end %>   
-
- <br />
+<br />
 
   <div class="float-right">
   	<% if current_user && current_user == @place.user %>
@@ -48,6 +44,7 @@
 <div class="clear"></div>
 <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
 	<%= f.input :message %>
+	<%= f.input :rating %>
 	<%= f.input :rating, as: :select, collection: Comment::RATINGS %>
 
 	<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
