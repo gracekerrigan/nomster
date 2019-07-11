@@ -12,9 +12,9 @@
  <script>
 
       function initMap(){
-      	var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>}:
+      	var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
       	var map = new google.maps.Map(document.getElementById('map'), {zoom: 12,
-      	     center: myLKatLng});
+      	     center: myLatLng});
       	var marker = new google.maps.Marker({
       		position: myLatLng,
       		map: map,
@@ -40,13 +40,11 @@
   </div>	
 </div>  
 <div class="clear"></div>
-<%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-	<%= f.input :message %>
-	<%= f.input :rating %>
-	<%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-
-	<%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-<% end %>	
+  <%= simple_form_for @place, url: place_photos_path(@place) do |f| %>
+  <%= f.input :caption %>
+  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+<% end %>
+	
 
 <div class="col-10 offset-1">
 <h1 class="float-left"> Comments </h1>
