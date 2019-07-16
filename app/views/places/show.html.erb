@@ -43,7 +43,7 @@
   <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
   <%= f.input :caption %>
   <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-  <%= f.input :picture (@image_tag.photo.url) %>
+  <%= f.input :picture %>
 <% end %>
 	
 
@@ -96,3 +96,8 @@
     </div>
 <% end %>            
 </div>
+
+<% @place.photos.each do |photo| %>
+   <%= image_tag photo.picture.to_s %>
+   <%= photo.caption %>
+<% end %>   
