@@ -39,13 +39,37 @@
     <% end %>  
   </div>	
 </div>  
+<div class="col-10 offset-1">
+<h1 class="float-left"> Photos </h1>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+  Add a photo
+</button>
+</div>
+
 <div class="clear"></div>
-  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :caption %>
-  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-  <%= f.input :picture %>
-<% end %>
-	
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <h4 class="modal-title" id="myModalLabel"> Add a photo</h4>
+      </div>
+      <div class="clear"></div>
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+        <%= f.input :caption %>
+        <%= f.input :picture %>
+        <%= f.submit "Add a Photo", class: 'btn btn-primary' %> 
+     <% end %>
+    </div>
+  </div>
+</div>
+
+
 
 <div class="col-10 offset-1">
 <h1 class="float-left"> Comments </h1>
@@ -101,3 +125,7 @@
    <%= image_tag photo.picture.to_s %>
    <%= photo.caption %>
 <% end %>   
+
+
+
+
