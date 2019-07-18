@@ -4,11 +4,18 @@
     <i><%= place.address %></i><br /><br />
     <p><%= place.description %></p><br />
 
-    <% if place.user.present? %>
+  <% if place.user.present? %>
        <small><%= place.user.email %></small>
     <% end %>   
 
- <%= image_tag place.photos.first.picture.to_s %>
+
+<% if place.photos.present? %>
+    <%= image_tag place.photos.first.picture.to_s %>
+<% end %>    
+    
+
+  
+
 
 <% if place.comments.present? %>
 <div class="col-12">
@@ -29,7 +36,6 @@
 <% end %>
 
   </div>
-
 
  
 
