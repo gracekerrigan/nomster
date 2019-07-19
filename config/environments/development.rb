@@ -9,7 +9,7 @@ Rails.application.configure do
     #enable_starttls_auto: true,
     #user_name: ENV['GMAIL_ADDRESS'],
     #password: ENV['GMAIL_PASSWORD']
-  }
+  #}
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.default_url_options = {host: 'localhost:3030'}
   # In the development environment your application's code is reloaded on
