@@ -11,7 +11,7 @@ Rails.application.configure do
   }
 
   # moar code here
-end     
+  
 
   config.action_mailer.default_url_options = {host: 'nomster-rachael-kerrigan.herokuapp.com' }
   # Settings specified here will take precedence over those in config/application.rb.
@@ -106,4 +106,5 @@ end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  end
 end
