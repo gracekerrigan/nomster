@@ -96,7 +96,7 @@
          <div class="modal-body">
 	         <%= f.input :message %>
 	         <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-	     </div>    
+	        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -111,7 +111,7 @@
 <% @place.comments.each do |comment| %>
 	<div class="col-12 col-sm-6">
 		<blockquote>
-		   <% if comment.humanized.rating.present? %>	
+		   <% if comment.humanized_rating.present? %>	
 			   <b><%= comment.humanized_rating %></b>
 			<% end %> 
 			<%= comment.message %>
