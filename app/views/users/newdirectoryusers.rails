@@ -82,4 +82,3 @@
 <% @user.places.each do |place| %>
 	<%= place.inspect %>
 <% end %>	
-
