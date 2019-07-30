@@ -59,7 +59,8 @@
 <% end %>  
 
 <% if current_user.photos.present? %>
-    <%= image_tag place.photos.first.picture.to_s %>   
+    <%= image_tag place.photos.first.picture.to_s %> 
+    <% end %>        
 <% if current_user.comments.present? %>
  <div class="col-12">
   <blockquote>
@@ -67,9 +68,11 @@
       <b><%= place.comments.last.humanized_rating %></b> -
     <%= place.comments.last.message %>
     <small><%= place.comments.last.user.email %></small>
+    <% end %>
   </blockquote> 
     <% @user.places.each do |place| %>
 	    <%= place.inspect %>
+<% end %>      
  </div>
 <% end %>  
 
