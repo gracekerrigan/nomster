@@ -10,5 +10,5 @@ Rails.application.routes.draw do
         root to: 'photos#create'
     end
     resource :users, only: :show
-        root to: 'users#show'
+        root to: 'user#show'
 end
