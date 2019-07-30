@@ -74,10 +74,14 @@ blockquote p {
 
 .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
   max-height: 550px;
-  width: 100%;
+  width: 75%;
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
-.carousel-teim.active,
+.carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
