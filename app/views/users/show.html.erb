@@ -68,12 +68,12 @@
       <b><%= place.comments.last.humanized_rating %></b> -
     <%= place.comments.last.message %>
     <small><%= place.comments.last.user.email %></small>
-    <% end %>
   </blockquote> 
+  <% end %>
     <% @user.places.each do |place| %>
 	    <%= place.inspect %>
-    <% end %>  
+    <% end %> 
+ </div>    
 <% end %>      
- </div>
-<% end %>  
+ 
 
