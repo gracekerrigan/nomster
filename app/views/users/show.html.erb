@@ -55,15 +55,13 @@
       <small><%= place.comments.last.user.email %></small>
      </blockquote>
     </div>
-   <% end %>   
-  </div>
-<% end %>  
-
+   <% end %>
+  </div>   
 <% if current_user.photos.present? %>
     <%= image_tag place.photos.first.picture.to_s %> 
     <% end %>        
 <% if current_user.comments.present? %>
- <div class="col-12">
+  <div class="col-12">
   <blockquote>
     <% if place.comments.last.humanized_rating.present? %>
       <b><%= place.comments.last.humanized_rating %></b> -
@@ -74,7 +72,9 @@
     <% @user.places.each do |place| %>
 	    <%= place.inspect %>
     <% end %> 
- </div>    
-<% end %>      
- 
+  </div>    
+ <% end %>  
+<% end %>     
+
+
 
