@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
 	def destroy
 		@photo = Photo.find(params[:id])
 		if @photo.user !=current_user
-			return render plain: 'Not Allowed'. statuts: :forbidden
+			return render plain: 'Not Allowed'. status: :forbidden
 		end
 		
 		@photo.destroy
